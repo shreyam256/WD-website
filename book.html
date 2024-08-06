@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Travel Website</title>
+    <link rel="stylesheet" href="book.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+    <section id="booking-form" class="booking-form">
+        <div class="container">
+            <h2>Booking Form</h2>
+            <form action="#" method="post">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="tour">Selected Tour:</label>
+                <input type="text" id="tour" name="tour" required>
+                
+                <button type="submit" class="btn">Submit</button>
+            </form>
+        </div>
+    </section>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tourItems = document.querySelectorAll('.tour-item');
+            const bookingForm = document.getElementById('booking-form');
+            const tourNameField = bookingForm.querySelector('#tour');
+            
+            // Add click event to each "Book Now" button
+            tourItems.forEach(function(item, index) {
+                const bookButton = item.querySelector('.btn');
+                
+                bookButton.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    
+                    // Get tour details from the clicked item
+                    const tourTitle = item.querySelector('h3').textContent;
+                    
+                    // Set the tour name in the booking form
+                    tourNameField.value = tourTitle;
+                    
+                    // Show the booking form
+                    bookingForm.style.display = 'block';
+                });
+            });
+        });
+    </script>
+
+
+    </body>
